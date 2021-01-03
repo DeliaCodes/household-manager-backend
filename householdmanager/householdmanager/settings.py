@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import django_heroku
 
+from decouple import config
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "&firesp@*#w-kvzk&bl!@edy*p*(q=vi5$ck2n$w5c)ae6l)d!"
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -79,20 +81,19 @@ WSGI_APPLICATION = "householdmanager.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": get_env_variable("DATABASE_NAME"),
-        "USER": get_env_variable("DATABASE_USER"),
-        "PASSWORD": get_env_variable("DATABASE_PASSWORD"),
-        "HOST": "",
-        "PORT": "",
-    }
+        "NAME": config("DATABASE_NAME"),
+        "USER": config("DATABASE_USER"),
+        "PASSWORD": config("DATABASE_PASSWORD"),
+        "HOST": config("HOST"),
+        "PORT": config"PORT"),
+}
 }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
+AUTH_PASSWORD_VALIDATORS = [{
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
