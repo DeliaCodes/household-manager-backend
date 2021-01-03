@@ -85,15 +85,16 @@ DATABASES = {
         "USER": config("DATABASE_USER"),
         "PASSWORD": config("DATABASE_PASSWORD"),
         "HOST": config("HOST"),
-        "PORT": config"PORT"),
-}
+        "PORT": config("PORT"),
+    }
 }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [{
+AUTH_PASSWORD_VALIDATORS = [
+    {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
