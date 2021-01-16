@@ -83,7 +83,8 @@ WSGI_APPLICATION = "householdmanager.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASE_URL = os.environ["DATABASE_URL"]
+# DATABASE_URL = os.environ["DATABASE_URL"]
+DATABASE_URL = config("DATABASE_URL")
 
 conn = psycopg2.connect(DATABASE_URL, sslmode="require")
 
