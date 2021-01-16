@@ -1,1 +1,1 @@
-web: gunicorn householdmanager.wsgi
+web: python3 householdmanager/manage.py runserver
